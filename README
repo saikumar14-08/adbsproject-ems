@@ -1,0 +1,91 @@
+# Django Project with MySQL
+
+This is a Django project configured to use MySQL as its database. The README provides instructions on setting up the MySQL database, importing data, configuring Django settings, applying migrations, and running the development server.
+
+## Prerequisites
+
+- Python (>=3.6)
+- Django (>=3.x)
+- MySQL Server
+- MySQL Client (for importing data)
+
+## Installation
+
+1. **Clone the Repository:**
+
+    ```bash
+    git clone https://github.com/yourusername/your-django-project.git
+    cd your-django-project
+    ```
+
+2. **Install Dependencies:**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **Create MySQL Database:**
+
+    Create a MySQL database using your preferred MySQL client or MySQL Workbench.
+
+    ```sql
+    CREATE DATABASE yourdbname;
+    ```
+
+4. **Import Data into MySQL:**
+
+    Assuming you have a SQL dump file (`mysql_dump.sql`), use the following command:
+
+    ```bash
+    mysql -u yourdbuser -p -h yourdbhost yourdbname < mysql_dump.sql
+    ```
+mysql -u root -p -h localhost dbms_project < mysql_dump.sql
+
+    Replace `yourdbuser`, `yourdbhost`, `yourdbname`, and `mysql_dump.sql` with your actual MySQL details.
+
+5. **Update Django Settings:**
+
+    Update the `settings.py` file with your MySQL configuration:
+
+    ```python
+    # settings.py
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'yourdbname',
+            'USER': 'yourdbuser',
+            'PASSWORD': 'yourdbpassword',
+            'HOST': 'yourdbhost',
+            'PORT': 'yourdbport',
+        }
+    }
+    ```
+
+    Replace `yourdbname`, `yourdbuser`, `yourdbpassword`, `yourdbhost`, and `yourdbport` with your actual MySQL details.
+
+6. **Apply Migrations:**
+
+    Run Django management commands to apply migrations:
+
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
+7. **Run Development Server:**
+
+    Start the Django development server:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+    Access your Django project at [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+
+## Additional Information
+
+- Make sure the MySQL client is installed and available in your system's PATH.
+- For more information on Django, refer to the [Django Documentation](https://docs.djangoproject.com/).
+
+Happy coding!
